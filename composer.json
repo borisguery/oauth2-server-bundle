@@ -1,0 +1,21 @@
+{
+    "name": "borisguery/oauth2-server-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Boris Guéry",
+            "email": "guery.b@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "borisguery/oauth2-server": "dev-master",
+        "symfony/framework-bundle": "^2.7|~3"
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/borisguery/oauth2-server.git"
+        }
+    ]
+}
