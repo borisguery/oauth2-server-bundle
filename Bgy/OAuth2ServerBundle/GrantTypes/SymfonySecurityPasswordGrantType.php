@@ -3,8 +3,12 @@
  * @author Boris Guéry <guery.b@gmail.com>
  */
 
-namespace Bgy\OAuth2\GrantType;
+namespace Bgy\OAuth2ServerBundle\GrantTypes;
 
+use Bgy\OAuth2\GrantType\GrantDecision;
+use Bgy\OAuth2\GrantType\GrantError;
+use Bgy\OAuth2\GrantType\GrantType;
+use Bgy\OAuth2\GrantType\MissingOrInvalidInputData;
 use Bgy\OAuth2\ResourceOwner;
 use Bgy\OAuth2\TokenRequestAttempt;
 use Bgy\OAuth2\Utils\GrantTypeUtils;

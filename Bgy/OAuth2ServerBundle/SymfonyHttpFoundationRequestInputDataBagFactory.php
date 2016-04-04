@@ -3,8 +3,9 @@
  * @author Boris Guéry <guery.b@gmail.com>
  */
 
-namespace Bgy\OAuth2;
+namespace Bgy\OAuth2ServerBundle;
 
+use Bgy\OAuth2\InputDataBag;
 use Symfony\Component\HttpFoundation\Request;
 
 class SymfonyHttpFoundationRequestInputDataBagFactory
