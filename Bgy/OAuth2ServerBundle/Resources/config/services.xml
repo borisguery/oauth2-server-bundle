@@ -4,13 +4,25 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
-    <!--
     <services>
-        <service id="bgy_o_auth2_server.example" class="Bgy\OAuth2ServerBundle\Example">
-            <argument type="service" id="service_id" />
-            <argument>plain_value</argument>
-            <argument>%parameter_name%</argument>
+        <service id="bgy_oauth2_server.authorization_server.storage.access_token"  synthetic="true" />
+        <service id="bgy_oauth2_server.authorization_server.storage.refresh_token" synthetic="true" />
+        <service id="bgy_oauth2_server.authorization_server.storage.client"        synthetic="true" />
+        <service id="bgy_oauth2_server.authorization_server.token_generator"       synthetic="true" />
+
+        <service id="bgy_oauth2_server.authorization_server.token_generator.php7_csprng" class="Bgy\OAuth2\Php7CSPRNGStringGenerator" />
+
+        <service id="bgy_oauth2_server.authorization_server.configuration" class="Bgy\OAuth2\AuthorizationServerConfiguration">
+            <argument type="service" id="bgy_oauth2_server.authorization_server.storage.client" />
+            <argument type="service" id="bgy_oauth2_server.authorization_server.storage.access_token" />
+            <argument type="service" id="bgy_oauth2_server.authorization_server.storage.refresh_token" />
+            <argument />
+            <argument type="service" id="bgy_oauth2_server.authorization_server.token_generator"/>
+            <argument />
+        </service>
+
+        <service id="bgy_oauth2_server.authorization_server" class="Bgy\OAuth2\AuthorizationServer">
+            <argument type="service" id="bgy_oauth2_server.authorization_server.configuration" />
         </service>
     </services>
-    -->
 </container>
