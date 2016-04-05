@@ -58,6 +58,8 @@ class BgyOAuth2ServerExtension extends Extension
         $authorizationServerConfigurationDefinition->replaceArgument(5, [
             'always_require_a_client'         => $authorizationServerConfig['always_require_a_client'],
             'always_generate_a_refresh_token' => $authorizationServerConfig['always_generate_a_refresh_token'],
+            'access_token_ttl'                => $authorizationServerConfig['access_token_ttl'],
+            'refresh_token_ttl'               => $authorizationServerConfig['refresh_token_ttl'],
         ]);
     }
 }
