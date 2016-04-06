@@ -10,12 +10,17 @@
     "minimum-stability": "stable",
     "require": {
         "borisguery/oauth2-server": "dev-master",
+        "borisguery/oauth2-server-http-foundation-bridge": "dev-master",
         "symfony/framework-bundle": "^2.7|~3"
     },
     "repositories": [
         {
             "type": "vcs",
             "url": "https://github.com/borisguery/oauth2-server.git"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/borisguery/oauth2-server-http-foundation-bridge.git"
         }
     ],
     "autoload": {
