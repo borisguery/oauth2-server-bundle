@@ -49,20 +49,19 @@ class BgyOAuth2ServerExtension extends Extension
             new Alias($authorizationServerConfig['token_generator'] ?: 'bgy_oauth2_server.authorization_server.token_generator.php7_csprng', true)
         );
 
-        $authorizationServerConfigurationDefinition = $container->getDefinition('bgy_oauth2_server.authorization_server.configuration');
-
         $grantTypesServices = [];
 
         foreach ($authorizationServerConfig['grant_types'] as $serviceId) {
             $grantTypesServices[] = new Reference($serviceId);
         }
 
-        $authorizationServerConfigurationDefinition->replaceArgument(3, $grantTypesServices);
-        $authorizationServerConfigurationDefinition->replaceArgument(5, [
+        $container->getDefinition('bgy_oauth2_server.authorization_server')->replaceArgument(4, $grantTypesServices);
+        $container->getDefinition('bgy_oauth2_server.authorization_server.configuration')->replaceArgument(1, [
             'always_require_a_client'         => $authorizationServerConfig['always_require_a_client'],
             'always_generate_a_refresh_token' => $authorizationServerConfig['always_generate_a_refresh_token'],
             'access_token_ttl'                => $authorizationServerConfig['access_token_ttl'],
             'refresh_token_ttl'               => $authorizationServerConfig['refresh_token_ttl'],
+            'revoke_refresh_token_when_used'               => $authorizationServerConfig['revoke_refresh_token_when_used'],
         ]);
     }
 }

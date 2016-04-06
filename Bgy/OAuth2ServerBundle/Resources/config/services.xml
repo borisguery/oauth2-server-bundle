@@ -17,16 +17,17 @@
         <service id="bgy_oauth2_server.authorization_server.token_generator.php7_csprng" class="Bgy\OAuth2\Php7CSPRNGStringGenerator" />
 
         <service id="bgy_oauth2_server.authorization_server.configuration" class="Bgy\OAuth2\AuthorizationServerConfiguration">
-            <argument type="service" id="bgy_oauth2_server.authorization_server.storage.client" />
-            <argument type="service" id="bgy_oauth2_server.authorization_server.storage.access_token" />
-            <argument type="service" id="bgy_oauth2_server.authorization_server.storage.refresh_token" />
-            <argument />
             <argument type="service" id="bgy_oauth2_server.authorization_server.token_generator"/>
             <argument />
+
         </service>
 
         <service id="bgy_oauth2_server.authorization_server" class="Bgy\OAuth2\AuthorizationServer">
             <argument type="service" id="bgy_oauth2_server.authorization_server.configuration" />
+            <argument type="service" id="bgy_oauth2_server.authorization_server.storage.client"/>
+            <argument type="service" id="bgy_oauth2_server.authorization_server.storage.access_token"/>
+            <argument type="service" id="bgy_oauth2_server.authorization_server.storage.refresh_token"/>
+            <argument/>
         </service>
 
         <service id="bgy_oauth2_server.guard_authenticator" class="%bgy_oauth2_server.guard_authenticator.class%">

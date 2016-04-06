@@ -14,7 +14,7 @@ class GrantTypeExtensionsCompilerPass implements CompilerPassInterface
 {
     public function process(ContainerBuilder $container)
     {
-        if (!$container->hasDefinition('bgy_oauth2_server.authorization_server.configuration')) {
+        if (!$container->hasDefinition('bgy_oauth2_server.authorization_server')) {
 
             return;
         }
@@ -22,11 +22,11 @@ class GrantTypeExtensionsCompilerPass implements CompilerPassInterface
         $taggedServices = $container->findTaggedServiceIds('bgy_oauth2_server.grant_type_extension');
 
         $configurationDefinition = $container
-            ->getDefinition('bgy_oauth2_server.authorization_server.configuration')
+            ->getDefinition('bgy_oauth2_server.authorization_server')
         ;
 
-        $grantTypesServices = is_array($configurationDefinition->getArgument(3))
-            ? $configurationDefinition->getArgument(3)
+        $grantTypesServices = is_array($configurationDefinition->getArgument(4))
+            ? $configurationDefinition->getArgument(4)
             : []
         ;
 
@@ -34,6 +34,6 @@ class GrantTypeExtensionsCompilerPass implements CompilerPassInterface
             $grantTypesServices[] = new Reference($id);
         }
 
-        $configurationDefinition->replaceArgument(3, $grantTypesServices);
+        $configurationDefinition->replaceArgument(4, $grantTypesServices);
     }
 }
