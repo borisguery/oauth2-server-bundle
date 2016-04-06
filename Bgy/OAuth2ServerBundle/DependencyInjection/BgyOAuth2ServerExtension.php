@@ -50,10 +50,13 @@ class BgyOAuth2ServerExtension extends Extension
         );
 
         $authorizationServerConfigurationDefinition = $container->getDefinition('bgy_oauth2_server.authorization_server.configuration');
+
         $grantTypesServices = [];
+
         foreach ($authorizationServerConfig['grant_types'] as $serviceId) {
             $grantTypesServices[] = new Reference($serviceId);
         }
+
         $authorizationServerConfigurationDefinition->replaceArgument(3, $grantTypesServices);
         $authorizationServerConfigurationDefinition->replaceArgument(5, [
             'always_require_a_client'         => $authorizationServerConfig['always_require_a_client'],
